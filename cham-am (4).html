@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chạm Âm – Đặt xe bằng giọng nói</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#101828;--indigo:#182B49;--off:#F7F9FC;--blue:#4776E6;--cyan:#42D9D0;--lav:#A8B8FF;--green:#1F7A63;--amber:#F4BC68;--ink:#101828;--mut:#475467;--card:#fff;--line:#D8E0EE;--bg:#F7F9FC;--blueTxt:#2F5BC9;--g:linear-gradient(135deg,#4776E6 0%,#7B6CF0 55%,#42D9D0 100%);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--ink:#F2F5FB;--mut:#B6C0D4;--card:#182B49;--line:#2E4468;--bg:#0D1422;--blueTxt:#A8B8FF;--green:#5FD3B3}}
+:root[data-theme=dark]{--ink:#F2F5FB;--mut:#B6C0D4;--card:#182B49;--line:#2E4468;--bg:#0D1422;--blueTxt:#A8B8FF;--green:#5FD3B3}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 "Be Vietnam Pro","Noto Sans",system-ui,sans-serif}
+h1,h2,h3{line-height:1.2;margin:0 0 .5em;font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(28px,4vw,44px)}h3{font-size:20px}p{margin:0 0 1em;max-width:68ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.skip{position:absolute;left:-999px;top:8px;background:#fff;color:#000;padding:10px 14px;z-index:99}.skip:focus{left:8px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:14px;border:2px solid transparent;font:600 16px "Be Vietnam Pro",sans-serif;cursor:pointer;text-decoration:none;transition:transform .12s,box-shadow .12s}
+.btn:active{transform:translateY(2px) scale(.98)}
+.pri{background:var(--g);color:#fff;box-shadow:0 10px 26px rgba(71,118,230,.45)}.pri:hover{filter:brightness(1.08)}.pri:active{box-shadow:0 3px 10px rgba(71,118,230,.4)}
+.sec{background:transparent;color:inherit;border-color:currentColor}
+/* nav */
+header{position:fixed;inset:0 0 auto;z-index:20;padding-top:env(safe-area-inset-top,0px);transition:background .25s}
+header.s{background:rgba(16,24,40,.82);backdrop-filter:blur(10px)}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px;color:#fff}
+.logo{display:flex;gap:10px;align-items:center;font-weight:800;text-decoration:none;font-size:18px}
+nav ul{display:flex;gap:6px;list-style:none;margin:0;padding:0}
+nav ul a{padding:10px 12px;text-decoration:none;font-size:15px;border-radius:10px}nav ul a:hover{background:rgba(255,255,255,.12)}
+#mb{display:none;background:none;border:2px solid #fff;color:#fff;border-radius:10px;min-width:48px;min-height:48px;font:600 15px inherit;cursor:pointer}
+@media(max-width:960px){#mb{display:block}nav ul{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;background:var(--navy);padding:12px 20px}nav ul.o{display:flex}.ncta{display:none}}
+/* hero */
+.hero{background:radial-gradient(1000px 620px at 82% 18%,rgba(123,108,240,.75) 0,transparent 62%),radial-gradient(800px 560px at 62% 95%,rgba(66,217,208,.45) 0,transparent 62%),radial-gradient(700px 500px at 5% 15%,rgba(71,118,230,.55) 0,transparent 60%),linear-gradient(160deg,#101828 0%,#182B49 55%,#1d2a63 100%);color:#fff;padding:120px 0 70px;position:relative;overflow:hidden}.hero::after{content:"";position:absolute;inset:auto 0 0;height:120px;background:linear-gradient(180deg,transparent,var(--bg));pointer-events:none}.hero .wrap{position:relative;z-index:1}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(42px,6.4vw,76px);background:linear-gradient(100deg,#fff 0%,#DDE4FF 45%,#8FF0E8 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}.stage::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:var(--g);filter:blur(70px);opacity:.55}
+.hero p.l{font-size:19px;color:#D5DCEB}
+.eb{color:var(--cyan);font-weight:600;font-size:15px;margin-bottom:14px}
+.stage{perspective:1000px;display:grid;place-items:center;min-height:520px;position:relative}
+.ph3d{width:250px;height:500px;border-radius:38px;background:linear-gradient(170deg,#1b2a55 0%,#0d1530 60%,#0f3a4a 100%);border:6px solid #3a4a7c;box-shadow:0 40px 90px rgba(71,118,230,.45),0 0 60px rgba(66,217,208,.25),0 0 0 2px #5b6ca8;transform:rotateY(-18deg) rotateX(6deg);transform-style:preserve-3d;animation:fl 7s ease-in-out infinite;padding:22px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;position:relative}
+@keyframes fl{50%{transform:rotateY(-8deg) rotateX(3deg) translateY(-12px)}}
+.rings{position:relative;width:120px;height:120px;display:grid;place-items:center}
+.rings i{position:absolute;inset:0;border:2px solid var(--cyan);border-radius:50%;opacity:0;animation:rg 3s infinite}.rings i:nth-child(2){animation-delay:1s}.rings i:nth-child(3){animation-delay:2s}
+@keyframes rg{0%{transform:scale(.4);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.micd{width:64px;height:64px;border-radius:50%;background:var(--g);box-shadow:0 0 30px rgba(66,217,208,.6);display:grid;place-items:center;z-index:1}
+.fc{position:absolute;background:rgba(255,255,255,.95);color:#101828;border-radius:16px;padding:10px 14px;font-size:14px;line-height:1.4;max-width:210px;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.fc.a{top:60px;left:-10px}.fc.b{bottom:70px;right:-10px;background:#DDF7F3}
+.noanim *{animation:none!important;transition:none!important}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+@media(max-width:860px){.hero{padding:100px 0 56px}.hero .wrap{grid-template-columns:1fr}.stage{min-height:400px}.ph3d{width:210px;height:400px}.fc.a{left:0;top:30px}.fc.b{right:0;bottom:40px}}
+/* generic */
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px}
+.card h3{color:var(--blueTxt)}.card{position:relative;overflow:hidden;box-shadow:0 10px 30px rgba(71,118,230,.10)}.card::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:var(--g)}
+.alt{background:linear-gradient(180deg,var(--card) 0%,var(--bg) 100%)}h2{background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding-bottom:.1em}
+.tag{display:inline-block;padding:3px 10px;border:1px solid var(--amber);border-radius:99px;font-size:13px;font-weight:600;color:var(--ink);background:rgba(244,188,104,.22)}
+/* demo */
+.demo{display:grid;grid-template-columns:minmax(300px,380px) 1fr;gap:40px;align-items:start}
+@media(max-width:860px){.demo{grid-template-columns:1fr}}
+.phone{width:100%;max-width:380px;margin:0 auto;background:#0b1220;border-radius:40px;padding:12px;box-shadow:0 30px 60px rgba(16,24,40,.35)}
+.scr{background:radial-gradient(420px 300px at 90% 0,rgba(123,108,240,.45),transparent 70%),radial-gradient(380px 300px at 0 100%,rgba(66,217,208,.28),transparent 70%),linear-gradient(170deg,#101828,#182B49);color:#fff;border-radius:30px;height:640px;display:flex;flex-direction:column;overflow:hidden}
+.top{padding:16px 18px 8px;display:flex;justify-content:space-between;align-items:center}
+.stt{font-size:14px;color:#B9F3EE;font-weight:600}
+#log{flex:1;overflow:auto;padding:8px 16px;display:flex;flex-direction:column;gap:10px}
+.m{padding:10px 14px;border-radius:16px;max-width:88%;font-size:16px;line-height:1.45}
+.m.c{background:#22365d;align-self:flex-start}.m.u{background:var(--g);align-self:flex-end}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:6px 14px}
+.chips button{min-height:48px;padding:0 14px;border-radius:12px;border:2px solid var(--lav);background:transparent;color:#fff;font:500 15px "Be Vietnam Pro",sans-serif;cursor:pointer}
+.chips button:hover{background:rgba(168,184,255,.2)}
+.ctl{display:flex;align-items:center;gap:10px;padding:10px 14px 16px}
+#mic{width:76px;height:76px;border-radius:50%;border:0;background:var(--g);color:#fff;cursor:pointer;display:grid;place-items:center;flex:none;box-shadow:0 8px 24px rgba(66,217,208,.45)}
+#mic[aria-pressed=true]{background:#E5484D;animation:pl 1.2s infinite;box-shadow:0 5px 0 #a02a2e}
+@keyframes pl{50%{box-shadow:0 0 0 14px rgba(229,72,77,.25)}}
+.ctl input{flex:1;min-width:0;min-height:48px;border-radius:12px;border:2px solid #3d4b72;background:#0f1a2e;color:#fff;padding:0 12px;font:16px "Be Vietnam Pro",sans-serif}
+.ctl .go{min-width:48px;min-height:48px;border-radius:12px;border:0;background:var(--lav);color:#101828;font-weight:700;cursor:pointer}
+.sos{background:none;border:2px solid var(--amber);color:var(--amber);border-radius:10px;min-height:44px;padding:0 12px;font:600 14px "Be Vietnam Pro",sans-serif;cursor:pointer}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:18px}
+.set{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:10px}
+.set label{display:flex;gap:8px;align-items:center;font-size:15px}
+.set input[type=range]{width:120px}
+.pin{font:800 40px/1 "Be Vietnam Pro",sans-serif;letter-spacing:.2em;color:var(--blueTxt);margin:6px 0 12px}
+.drv input{min-height:52px;font-size:22px;letter-spacing:.2em;width:11ch;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);padding:0 12px;font-family:inherit}
+.msg{margin-top:10px;font-weight:600;min-height:1.5em}
+.ok{color:var(--green)}.er{color:#C0262B}:root[data-theme=dark] .er,:root:not([data-theme=light]) .er{}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .er{color:#FF8E91}}
+:root[data-theme=dark] .er{color:#FF8E91}
+/* 10m */
+.dist{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+@media(max-width:760px){.dist{grid-template-columns:1fr}}
+.radar{aspect-ratio:1;max-width:360px;margin:auto;width:100%}
+.big{font-size:64px;font-weight:800;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;line-height:1.1}
+input[type=range]{width:100%;accent-color:var(--blue);min-height:48px}
+.flash{transition:background .1s}.flash.on{background:var(--amber)!important;color:#101828}
+table{width:100%;border-collapse:collapse;font-size:16px}th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+.scroll{overflow-x:auto}
+footer{background:linear-gradient(135deg,#101828 0%,#1d2a63 60%,#16525a 100%);color:#C9D2E4;padding:50px 0 60px;font-size:15px}
+footer a{color:#fff}
+.tb{position:fixed;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;gap:8px}
+.tb button{min-height:48px;padding:0 14px;border-radius:99px;border:2px solid var(--blue);background:var(--card);color:var(--ink);font:600 14px "Be Vietnam Pro",sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.bd{display:inline-block;padding:3px 10px;border-radius:99px;font-size:13px;font-weight:600;border:1px solid;white-space:nowrap}.bd.on{background:rgba(31,122,99,.14);color:var(--green);border-color:var(--green)}.bd.off{background:rgba(244,188,104,.22);color:var(--ink);border-color:var(--amber)}.live{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 18px;font-weight:600}.sys td:first-child{font-weight:600;white-space:nowrap}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+#pay{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;background:linear-gradient(135deg,#3A5FCC,#7440D4 55%,#14786F);color:#fff}
+#pay[hidden]{display:none}
+#pay-ok{flex:1;border:0;background:transparent;color:#fff;font:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;text-align:center;cursor:pointer}
+#pay .pt{font-size:clamp(24px,5vw,36px);font-weight:700}
+#pay .pa{font-size:clamp(48px,14vw,120px);font-weight:800;line-height:1}
+#pay .ph{font-size:clamp(20px,4vw,28px)}
+#pay .pc{font-size:clamp(20px,4vw,28px);font-weight:600;background:rgba(0,0,0,.28);padding:14px 22px;border-radius:18px;max-width:560px}
+#pay-rp{min-height:72px;border:0;border-top:2px solid rgba(255,255,255,.4);background:rgba(0,0,0,.3);color:#fff;font:inherit;font-size:20px;font-weight:600;cursor:pointer}
+#pay button:focus-visible{outline:4px solid #fff;outline-offset:-8px}
+</style>
+</head>
+<body>
+<a class="skip" href="#demo">Bỏ qua đến ứng dụng</a>
+<header id="hd"><div class="wrap"><nav aria-label="Điều hướng chính">
+<a class="logo" href="#top" aria-label="Chạm Âm – về đầu trang"><svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4776E6"/><stop offset=".55" stop-color="#7B6CF0"/><stop offset="1" stop-color="#42D9D0"/></linearGradient></defs><rect width="34" height="34" rx="10" fill="url(#lg)"/><path d="M7 17h3M12 12v10M17 8v18M22 12v10M27 17h-3" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><circle cx="17" cy="29" r="1.8" fill="#42D9D0"/></svg>CHẠM ÂM</a>
+<button id="mb" aria-expanded="false" aria-controls="mn">Menu</button>
+<ul id="mn"><li><a href="#top">Trang chủ</a></li><li><a href="#demo">Đặt xe</a></li><li><a href="#tim-xe">Tìm xe</a></li><li><a href="#trang-thai">Trạng thái hệ thống</a></li><li><a href="#thong-ke">Thống kê phiên</a></li></ul>
+<a class="btn pri ncta" href="#demo" style="min-height:44px">Mở ứng dụng</a></nav></div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+<div><p class="eb">Ứng dụng đặt xe bằng giọng nói</p>
+<h1>Chạm Âm</h1>
+<p class="l">Nói điểm đến, nghe phản hồi, tìm xe và xác thực chuyến đi bằng mã PIN. Dành cho người khiếm thị và mọi người dùng.</p>
+<div style="margin-top:24px"><a class="btn pri" href="#demo">Mở ứng dụng</a></div></div>
+<div class="stage" aria-hidden="true">
+<div class="ph3d"><div class="rings"><i></i><i></i><i></i><div class="micd"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div></div>
+<svg width="200" height="90" viewBox="0 0 200 90"><path d="M10 80C60 80 40 20 100 20S140 70 190 12" stroke="#42D9D0" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="6 10"/><circle cx="10" cy="80" r="7" fill="#A8B8FF"/><circle cx="190" cy="12" r="7" fill="#37B897"/></svg>
+<span style="color:#B9F3EE;font-size:14px">Đang nghe…</span></div>
+<div class="fc a">“Gọi xe đến Bệnh viện Mắt.”</div><div class="fc b">Bạn muốn đặt xe máy hay ô tô?</div></div>
+</div></div>
+
+<section id="demo"><div class="wrap">
+<h2>Đặt xe</h2>
+<p>Bấm micro và nói, hoặc gõ vào ô văn bản. Thử: “Tôi muốn đến Bệnh viện Mắt”, rồi “đúng rồi”, “ô tô”. Có thể nói “hủy”, “quay lại”, “lặp lại”, “hỗ trợ”. Khi chuyến đi bắt đầu, nói “đã đến nơi” để thử bước thanh toán.</p>
+<p><span class="tag">Bản mô phỏng</span> Không có chuyến xe, tài xế hay vị trí thật. Trình duyệt xử lý giọng nói; Chạm Âm không ghi âm hay gửi dữ liệu ra máy chủ.</p>
+<div class="demo">
+<div><div class="phone"><div class="scr" role="region" aria-label="Màn hình ứng dụng Chạm Âm mô phỏng">
+<div class="top"><strong>Chạm Âm</strong><span class="stt" id="stt">Sẵn sàng</span></div>
+<div id="log" aria-live="polite" aria-label="Hội thoại"></div>
+<div class="chips" id="chips"></div>
+<div class="ctl"><button id="mic" aria-pressed="false" aria-label="Bấm để nói"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+<input id="ti" aria-label="Hoặc gõ yêu cầu" placeholder="Hoặc gõ ở đây" autocomplete="off"><button class="go" id="go" aria-label="Gửi">Gửi</button></div>
+<div style="padding:0 14px 14px;display:flex;gap:8px;flex-wrap:wrap"><button class="sos" id="sos">Hỗ trợ an toàn</button><button class="sos" id="rep" style="border-color:var(--lav);color:var(--lav)">Nghe lại</button><button class="sos" id="rst" style="border-color:#8a96b3;color:#C9D2E4">Làm lại</button></div>
+</div></div></div>
+<div>
+<div class="panel"><h3>Giọng nói</h3><div class="set">
+<label><input type="checkbox" id="vo" checked> Đọc to phản hồi</label>
+<button class="btn sec" id="vtest" type="button" style="min-height:44px">Nghe thử giọng</button>
+<label>Tốc độ <input type="range" id="rt" min="0.7" max="1.2" step="0.05" value="0.95" aria-label="Tốc độ đọc"></label>
+<label>Âm lượng <input type="range" id="vl" min="0" max="1" step="0.1" value="1" aria-label="Âm lượng"></label></div>
+<p id="cap" style="margin-top:12px;color:var(--mut)" aria-live="polite"></p>
+<p id="vi" role="status" style="margin-top:6px;color:var(--mut);font-size:14px"></p></div>
+<div class="panel drv" id="dp"><h3>Giao diện tài xế (mô phỏng)</h3>
+<p style="color:var(--mut)">Khi tới bước xác thực, mã PIN sẽ hiện ở đây để hành khách nghe và tài xế nhập.</p>
+<div class="pin" id="pin" aria-live="polite">––––––</div>
+<button class="btn sec" id="pl" disabled style="min-height:48px">Nghe lại mã PIN</button>
+<div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:center"><label class="sr" for="pi">Tài xế nhập mã PIN</label><input id="pi" inputmode="numeric" maxlength="6" placeholder="Nhập PIN" disabled><button class="btn pri" id="pv" disabled style="min-height:52px">Xác nhận</button></div>
+<div class="msg" id="pm" role="status" aria-live="polite"></div></div>
+</div></div>
+</div></section>
+
+<section class="alt" id="tim-xe"><div class="wrap">
+<h2>Tìm xe</h2>
+<p>Kéo thanh trượt (hoặc dùng phím mũi tên) để mô phỏng khoảng cách tới xe. <span class="tag">Mô phỏng, không dùng GPS thật</span></p>
+<div class="dist"><svg class="radar" viewBox="0 0 300 300" role="img" aria-label="Sơ đồ mô phỏng khoảng cách tới xe"><circle cx="150" cy="150" r="140" fill="none" stroke="var(--line)" stroke-width="2"/><circle cx="150" cy="150" r="90" fill="none" stroke="var(--line)" stroke-width="2"/><circle cx="150" cy="150" r="40" fill="none" stroke="var(--line)" stroke-width="2"/><circle id="ring" cx="150" cy="150" r="40" fill="none" stroke="#4776E6" stroke-width="4" opacity=".6"/><circle cx="150" cy="150" r="12" fill="#4776E6"/><rect id="car" x="136" y="30" width="28" height="18" rx="5" fill="#1F7A63"/></svg>
+<div><div class="big" id="dm">120 m</div><p id="dt" role="status" aria-live="polite" style="font-size:20px;margin-top:10px">Xe đang cách bạn khoảng 120 mét.</p>
+<label for="dr" class="sr">Khoảng cách tới xe</label><input type="range" id="dr" min="0" max="4" value="0" aria-valuetext="120 mét">
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn pri" id="vb">Rung</button><button class="btn sec flash" id="fl">Chớp sáng</button></div>
+<p id="vn" style="color:var(--mut);margin-top:10px"></p></div></div>
+</div></section>
+
+<section id="trang-thai"><div class="wrap">
+<h2>Trạng thái hệ thống</h2>
+<p class="live">Trạng thái hội thoại: <span class="bd on" id="ss">Sẵn sàng</span></p>
+<div class="panel scroll"><table class="sys"><caption class="sr">Trạng thái các thành phần</caption><thead><tr><th scope="col">Thành phần</th><th scope="col">Vai trò</th><th scope="col">Trạng thái</th></tr></thead><tbody id="sy"></tbody></table></div>
+</div></section>
+
+<section class="alt" id="thong-ke"><div class="wrap">
+<h2>Thống kê phiên sử dụng</h2>
+<p><span class="tag">Dữ liệu phiên</span> Số liệu đếm thao tác của bạn trong phiên này và mất khi tải lại trang.</p>
+<div class="scroll"><table><caption class="sr">Bảng điều khiển mẫu</caption><tr><th>Chỉ số</th><th>Giá trị phiên này</th></tr>
+<tr><td>Chuyến mô phỏng đã bắt đầu</td><td id="k1">0</td></tr><tr><td>Chuyến mô phỏng hoàn tất</td><td id="k2">0</td></tr><tr><td>Lượt dùng giọng nói / văn bản</td><td id="k3">0</td></tr><tr><td>Xác thực PIN thành công</td><td id="k4">0</td></tr><tr><td>Lượt yêu cầu hỗ trợ</td><td id="k5">0</td></tr><tr><td>Thanh toán tiền mặt đã xác nhận</td><td id="k6">0</td></tr></table></div>
+</div></section>
+</main>
+<footer><div class="wrap"><strong style="color:#fff">CHẠM ÂM</strong><p>Bản demo, chưa kết nối hãng xe hay dịch vụ bên thứ ba. Quyền riêng tư: không thu thập hay lưu dữ liệu cá nhân.</p><p><a href="#top">Về đầu trang</a></p></div></footer>
+<div id="pay" hidden role="dialog" aria-modal="true" aria-label="Thanh toán tiền mặt">
+<button id="pay-ok" type="button"><span class="pt">Bạn đã đến nơi</span><span class="pa" id="pay-a">0 đ</span><span class="ph">Thanh toán tiền mặt cho tài xế</span><span class="pc">Chạm vào bất kỳ đâu để xác nhận “Tôi đã trả tiền mặt”</span></button>
+<button id="pay-rp" type="button">Nghe lại số tiền</button></div>
+<div class="tb"><button id="th" aria-pressed="false">Giảm chuyển động</button><button id="dk" aria-pressed="false">Chế độ tối</button></div>
+
+<script>
+const $=s=>document.querySelector(s),E=document.documentElement;
+const K={k1:0,k2:0,k3:0,k4:0,k5:0,k6:0},bump=k=>{K[k]++;$('#'+k).textContent=K[k]};
+/* nav */
+const hd=$('#hd');addEventListener('scroll',()=>hd.classList.toggle('s',scrollY>20));
+$('#mb').onclick=e=>{const o=$('#mn').classList.toggle('o');e.target.setAttribute('aria-expanded',o)};
+$('#mn').onclick=e=>{if(e.target.tagName=='A')$('#mn').classList.remove('o')};
+$('#th').onclick=e=>{const p=e.target.getAttribute('aria-pressed')!='true';e.target.setAttribute('aria-pressed',p);document.body.classList.toggle('noanim',p)};
+$('#dk').onclick=e=>{const p=e.target.getAttribute('aria-pressed')!='true';e.target.setAttribute('aria-pressed',p);E.dataset.theme=p?'dark':'light'};
+/* 10m */
+const D=[120,60,25,10,3],DT=["Xe đang cách bạn khoảng 120 mét.","Xe đang cách bạn khoảng 60 mét.","Xe đang cách bạn khoảng 25 mét.","Bạn đang tiến gần đến phương tiện.","Bạn đã đến gần phương tiện. Hãy xác thực mã PIN với tài xế trước khi lên xe."];
+function setD(i,sp){const d=D[i];$('#dm').textContent=d+' m';$('#dt').textContent=DT[i];$('#dr').setAttribute('aria-valuetext',d+' mét');$('#car').setAttribute('y',30+(1-d/120)*80+ (d<=3?0:0));$('#ring').setAttribute('r',40+d/120*100);if(sp)say(DT[i],true)}
+$('#dr').oninput=e=>setD(+e.target.value,true);
+$('#vb').onclick=()=>{$('#vn').textContent=navigator.vibrate&&navigator.vibrate([200,100,200,100,400])?'Thiết bị đang rung.':'Thiết bị hoặc trình duyệt này không hỗ trợ rung. Tín hiệu trực quan: ▮ ▮ ▮▮'};
+$('#fl').onclick=()=>{const b=$('#fl');let n=0;const t=setInterval(()=>{b.classList.toggle('on');if(++n>7){clearInterval(t);b.classList.remove('on')}},180);$('#vn').textContent='Trình duyệt không điều khiển được đèn flash. Nút này chớp sáng trên màn hình để mô phỏng.'};
+/* speech */
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition,syn=window.speechSynthesis;let rec,listening=false,last='';
+let VV=null;
+function pickVoice(){if(!syn)return null;const vs=syn.getVoices().filter(v=>/^vi/i.test(v.lang)||/vi[eệ]t/i.test(v.name));if(!vs.length)return null;const sc=v=>(/natural|neural|online/i.test(v.name)?4:0)+(/google|microsoft|hoaimy|namminh|linh/i.test(v.name)?2:0)+(/vi[-_]VN/i.test(v.lang)?1:0);return vs.slice().sort((a,b)=>sc(b)-sc(a))[0]}
+/* chuẩn hóa văn bản để giọng Việt đọc tự nhiên */
+const vt=t=>t.replace(/[“”"]/g,'').replace(/\bdemo\b/gi,'đê mô').replace(/\bPIN\b/g,'pin').replace(/…/g,'.').replace(/\s+/g,' ').trim();
+const sp=t=>(vt(t).match(/[^.!?:;]+[.!?:;]*/g)||[]).map(s=>s.trim()).filter(Boolean);
+function vinfo(m){const e=$('#vi');if(e)e.textContent=m}
+function vstat(){if(TTS_URL)return vinfo('Đang dùng giọng tiếng Việt từ máy chủ.');if(!syn)return vinfo('Trình duyệt này không hỗ trợ đọc to. Hãy dùng Microsoft Edge, Chrome hoặc Safari.');VV=VV||pickVoice();vinfo(VV?'Giọng đang dùng: '+VV.name+'.':'Máy này chưa có giọng tiếng Việt nên có thể không nghe được tiếng. Hãy mở bằng Microsoft Edge (có giọng tiếng Việt tự nhiên) hoặc cài thêm giọng Vietnamese trong cài đặt giọng nói của hệ điều hành.')}
+function speakLocal(t){if(!syn)return;VV=VV||pickVoice();const parts=sp(t),my=tok;
+ setTimeout(()=>{if(my!==tok)return;parts.forEach(s=>{const u=new SpeechSynthesisUtterance(s);u.lang='vi-VN';if(VV)u.voice=VV;u.rate=+$('#rt').value;u.pitch=1;u.volume=+$('#vl').value;u.onerror=e=>{if(e.error&&e.error!=='canceled'&&e.error!=='interrupted')vinfo('Không phát được âm thanh ('+e.error+'). Kiểm tra âm lượng máy, chế độ im lặng và quyền phát âm thanh của trình duyệt.')};syn.speak(u)});if(syn.paused)syn.resume()},100)}
+/* giọng đọc từ máy chủ (Azure Neural vi-VN qua Worker); để trống thì dùng giọng trình duyệt */
+const TTS_URL='';
+const AU=new Audio(),AC=new Map();let tok=0;
+const SIL='data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=';
+['pointerdown','keydown'].forEach(ev=>addEventListener(ev,()=>{if(TTS_URL&&!AU.dataset.u){AU.dataset.u=1;AU.src=SIL;AU.play().catch(()=>{})}},{once:true}));
+function stopSpeak(){tok++;AU.pause();if(syn)syn.cancel()}
+async function getClip(s){if(AC.has(s))return AC.get(s);const r=await fetch(TTS_URL+(TTS_URL.includes('?')?'&':'?')+'text='+encodeURIComponent(s));if(!r.ok)throw new Error('tts');const u=URL.createObjectURL(await r.blob());AC.set(s,u);return u}
+function playClip(u){return new Promise((res,rej)=>{AU.onended=res;AU.onerror=rej;AU.src=u;AU.volume=+$('#vl').value;AU.playbackRate=+$('#rt').value;AU.play().catch(rej)})}
+async function speak(t){if(!$('#vo').checked)return;stopSpeak();if(!TTS_URL)return speakLocal(t);const my=tok,parts=sp(t);if(!parts.length)return;
+ try{let next=getClip(parts[0]);next.catch(()=>{});for(let i=0;i<parts.length;i++){const u=await next;if(my!==tok)return;if(i+1<parts.length){next=getClip(parts[i+1]);next.catch(()=>{})}await playClip(u);if(my!==tok)return}}catch(e){if(my===tok)speakLocal(t)}}
+function say(t,onlySpeak){if(!onlySpeak){add(t,'c');last=t}$('#cap').textContent='Phụ đề: '+t;speak(t)}
+function add(t,c){const d=document.createElement('div');d.className='m '+c;d.textContent=t;$('#log').append(d);$('#log').scrollTop=1e5}
+const stt=t=>{$('#stt').textContent=t;$('#ss').textContent=t};
+/* state machine */
+const PL=[["Bệnh viện Mắt","Bệnh viện Mắt Trung ương, Hà Nội",["benh vien mat","vien mat","mat trung uong"]],["Bệnh viện Bạch Mai","Bệnh viện Bạch Mai, Hà Nội",["bach mai"]],["Ga Hà Nội","Ga Hà Nội, phố Lê Duẩn",["ga ha noi","nha ga"]],["Hồ Hoàn Kiếm","Hồ Hoàn Kiếm, Hà Nội",["ho guom","hoan kiem"]],["Sân bay Nội Bài","Sân bay quốc tế Nội Bài",["noi bai","san bay"]]];
+const nz=s=>s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d');
+const S={st:'idle',dest:null,veh:null,pin:'',prev:null,t:null};
+const CH={idle:[],dest:PL.slice(0,3).map(p=>p[0]),confirm_dest:['Đúng rồi','Không phải'],vehicle:['Xe máy','Ô tô'],confirm_booking:['Xác nhận đặt','Đổi điểm đến'],booking_simulation:[],driver_assigned:[],finding_vehicle:[],pin_verification:[],trip_started:['Đã đến nơi'],payment:['Tôi đã trả tiền mặt'],trip_completed:['Làm lại'],error:[]};
+const LB={idle:'Sẵn sàng',dest:'Hỏi điểm đến',confirm_dest:'Xác nhận điểm đến',vehicle:'Chọn xe',confirm_booking:'Xác nhận đặt xe (mô phỏng)',booking_simulation:'Đang tìm tài xế mô phỏng',driver_assigned:'Đã có tài xế mô phỏng',finding_vehicle:'Tìm xe',pin_verification:'Xác thực PIN',trip_started:'Đang đi',payment:'Chờ thanh toán tiền mặt',trip_completed:'Hoàn tất',error:'Lỗi'};
+function go(s){S.prev=S.st;S.st=s;stt(LB[s]);const c=$('#chips');c.innerHTML='';CH[s].forEach(x=>{const b=document.createElement('button');b.textContent=x;b.onclick=()=>input(x);c.append(b)})}
+function ask(){go('dest');say('Xin chào, tôi là Chạm Âm. Tôi có thể giúp bạn đặt xe bằng giọng nói. Bạn muốn đến đâu hôm nay?')}
+function input(raw){raw=raw.trim();if(!raw)return;add(raw,'u');bump('k3');const t=nz(raw);const has=(...w)=>w.some(x=>t.includes(x));
+ if(S.st=='idle'){if(has('di','den','goi xe','dat xe','xe'))return start(t);return ask()}
+ if(has('huy','thoi'))return reset('Đã hủy. Bạn có thể bắt đầu lại bất cứ lúc nào.');
+ if(has('lap lai','nghe lai','noi lai')){return say(last)}
+ if(has('ho tro','an toan','khan cap','giup')){bump('k5');return say('Đây là mô phỏng hỗ trợ an toàn. Trong sản phẩm thật, bạn sẽ được kết nối với người hỗ trợ đã cấu hình. Demo này không gọi cấp cứu.')}
+ if(has('quay lai')&&S.prev&&!['booking_simulation','driver_assigned','finding_vehicle','pin_verification','payment'].includes(S.st)){S.st=S.prev;go(S.st);return say('Đã quay lại bước trước. '+({dest:'Bạn muốn đến đâu?',vehicle:'Bạn muốn đi xe máy hay ô tô?',confirm_dest:'Bạn vui lòng xác nhận điểm đến.'}[S.st]||''))}
+ if(has('trang thai','toi dau'))return say('Trạng thái hiện tại: '+LB[S.st]+'.');
+ const yes=has('dung','ok','xac nhan','vang','co'),no=has('khong','sai','doi');
+ switch(S.st){
+ case'dest':{if(has('doi'))return say('Bạn muốn đến đâu?');return start(t)}
+ case'confirm_dest':if(has('khong phai','sai','khong')||(no&&!yes)){go('dest');return say('Bạn muốn đến đâu?')}
+  if(yes){go('vehicle');return say('Bạn muốn đi xe máy hay ô tô?')}break;
+ case'vehicle':if(has('xe may')){S.veh='xe máy'}else if(has('o to','oto','taxi')){S.veh='ô tô'}else break;
+  go('confirm_booking');return say('Bạn hãy kiểm tra thông tin trước khi tiếp tục. Điểm đón: vị trí hiện tại mẫu. Điểm đến: '+S.dest+'. Loại xe: '+S.veh+'. Bạn xác nhận đặt xe mô phỏng chứ?');
+ case'confirm_booking':if(has('doi')){go('dest');return say('Bạn muốn đến đâu?')}
+  if(yes)return book();if(has('khong')){go('vehicle');return say('Bạn muốn đi xe máy hay ô tô?')}break;
+ case'trip_started':if(has('hoan tat','xong','den noi'))return fin();break;
+ case'payment':if(has('chua','khong'))return say('Bạn hãy trả tiền mặt cho tài xế trước. Khi trả xong, chạm vào màn hình hoặc nói “tôi đã trả tiền mặt”.');
+  if(has('tra','tien mat','xong','roi','xac nhan','vang','dung'))return paid();
+  return say('Khi đã trả tiền mặt cho tài xế, bạn hãy chạm vào màn hình hoặc nói “tôi đã trả tiền mặt”.');
+ case'trip_completed':if(has('lam lai','bat dau'))return reset();break}
+ if(['booking_simulation','driver_assigned','finding_vehicle','pin_verification'].includes(S.st))return say('Tôi đang xử lý bước hiện tại. Bạn có thể nói “hủy” hoặc “hỗ trợ”.');
+ go(S.st);say('Xin lỗi, tôi chưa hiểu. Bạn vui lòng nói lại hoặc chọn từ danh sách gợi ý.')}
+function start(t){const p=PL.find(p=>p[2].some(k=>t.includes(k)));if(!p){go('dest');return say('Xin lỗi, tôi chưa nghe rõ địa điểm. Bạn vui lòng nói lại tên địa điểm hoặc chọn từ danh sách gợi ý.')}
+ S.dest=p[0];go('confirm_dest');say('Tôi đã nghe bạn muốn đến '+p[0]+', tức là '+p[1]+'. Địa điểm này là điểm mẫu. Bạn xác nhận chứ?')}
+function book(){go('booking_simulation');say('Tôi đang mô phỏng quá trình tìm tài xế. Vui lòng chờ một chút.');bump('k1');S.t=setTimeout(()=>{go('driver_assigned');say('Đã có tài xế mô phỏng. Xe mẫu màu trắng, biển số giả lập. Xe đang đến.');S.t=setTimeout(finding,3500)},2200)}
+function finding(){go('finding_vehicle');let i=0;const step=()=>{setD(i,false);$('#dr').value=i;say(DT[i]);if(navigator.vibrate)navigator.vibrate([150,80,150]);if(++i<D.length)S.t=setTimeout(step,3800);else S.t=setTimeout(pinStep,3800)};step()}
+function pinStep(){go('pin_verification');S.pin=String(crypto.getRandomValues(new Uint32Array(1))[0]%1e6).padStart(6,'0');$('#pin').textContent=S.pin;['pl','pi','pv'].forEach(i=>$('#'+i).disabled=false);$('#pm').textContent='';sayPin();$('#dp').scrollIntoView({block:'nearest'})}
+function sayPin(){say('Đây là mã PIN của chuyến đi demo: '+S.pin.split('').join(', ')+'. Vui lòng xác nhận với giao diện tài xế mô phỏng.')}
+$('#pl').onclick=()=>speak('Mã PIN: '+S.pin.split('').join(', '));
+$('#pv').onclick=()=>{const m=$('#pm');if(S.st!='pin_verification')return;if($('#pi').value===S.pin){m.className='msg ok';m.textContent='✔ Xác thực thành công. Bạn có thể lên xe.';bump('k4');['pi','pv'].forEach(i=>$('#'+i).disabled=true);go('trip_started');say('Xác thực thành công. Chuyến đi mô phỏng đã bắt đầu.')}else{m.className='msg er';m.textContent='✖ Mã PIN sai. Vui lòng nhập lại.';speak('Mã PIN chưa đúng. Vui lòng thử lại.')}};
+/* thanh toán tiền mặt (mô phỏng) */
+const KM={'Bệnh viện Mắt':6.2,'Bệnh viện Bạch Mai':5.4,'Ga Hà Nội':3.5,'Hồ Hoàn Kiếm':4.1,'Sân bay Nội Bài':28},RATE={'xe máy':[10000,5000],'ô tô':[25000,12000]};
+const vnd=n=>n.toLocaleString('vi-VN')+' đ',vsay=n=>n%1000?n+' đồng':(n/1000)+' nghìn đồng';
+const payMsg=()=>'Bạn đã đến '+S.dest+'. Số tiền cần thanh toán là '+vsay(S.fare)+', trả bằng tiền mặt cho tài xế. Khi đã trả tiền, bạn chỉ cần chạm vào bất kỳ đâu trên màn hình.';
+function fin(){const r=RATE[S.veh]||RATE['ô tô'];S.fare=Math.round((r[0]+r[1]*(KM[S.dest]||5))/1000)*1000;go('payment');
+ $('#pay-a').textContent=vnd(S.fare);$('#pay-ok').setAttribute('aria-label','Bạn đã đến nơi. Cần thanh toán '+vsay(S.fare)+' bằng tiền mặt. Chạm để xác nhận đã trả tiền mặt.');
+ $('#pm').className='msg ok';$('#pm').textContent='Cước chuyến: '+vnd(S.fare)+'. Chờ khách xác nhận đã trả tiền mặt.';
+ $('#pay').hidden=false;$('#pay-ok').focus({preventScroll:true});if(navigator.vibrate)navigator.vibrate([300,120,300]);say(payMsg())}
+function paid(){if(S.st!='payment')return;$('#pay').hidden=true;bump('k6');bump('k2');
+ $('#pm').className='msg ok';$('#pm').textContent='✔ Khách đã xác nhận trả '+vnd(S.fare)+' bằng tiền mặt.';
+ go('trip_completed');say('Cảm ơn quý khách. Chuyến đi mô phỏng đã hoàn tất.');$('#mic').focus({preventScroll:true})}
+$('#pay-ok').onclick=paid;$('#pay-rp').onclick=()=>say(payMsg(),true);
+function reset(m){clearTimeout(S.t);S.dest=S.veh=null;S.fare=0;$('#pay').hidden=true;$('#pin').textContent='––––––';['pl','pi','pv'].forEach(i=>$('#'+i).disabled=true);$('#pi').value='';$('#pm').textContent='';stopSpeak();go('idle');if(m){say(m)}else{$('#log').innerHTML='';add('Bấm micro hoặc nút “Gửi” để bắt đầu.','c')}}
+/* mic */
+$('#mic').onclick=()=>{if(S.st=='idle')ask();if(!SR){add('Trình duyệt này không hỗ trợ nhận dạng giọng nói. Hãy gõ vào ô văn bản hoặc dùng nút gợi ý.','c');$('#ti').focus();return}
+ if(listening){rec.stop();return}rec=new SR();rec.lang='vi-VN';rec.interimResults=false;rec.onstart=()=>{listening=true;$('#mic').setAttribute('aria-pressed',true);$('#mic').setAttribute('aria-label','Đang nghe. Bấm để dừng');stopSpeak();stt('Đang nghe…')};
+ rec.onresult=e=>input(e.results[0][0].transcript);rec.onerror=e=>{add(e.error=='not-allowed'?'Chưa được cấp quyền micro. Bạn có thể gõ văn bản thay thế.':'Tôi chưa nghe rõ. Bạn thử lại hoặc gõ văn bản.','c')};
+ rec.onend=()=>{listening=false;$('#mic').setAttribute('aria-pressed',false);$('#mic').setAttribute('aria-label','Bấm để nói');stt(LB[S.st])};setTimeout(()=>{try{rec.start()}catch(e){}},S.st=='dest'?3200:0)};
+$('#vtest').onclick=()=>speak('Xin chào, đây là giọng đọc tiếng Việt của Chạm Âm.');
+$('#go').onclick=()=>{const v=$('#ti').value;$('#ti').value='';input(v)};
+$('#ti').onkeydown=e=>{if(e.key=='Enter')$('#go').click()};
+$('#sos').onclick=()=>input('hỗ trợ');$('#rep').onclick=()=>last&&say(last,true);$('#rst').onclick=()=>reset();
+if(syn){syn.getVoices();syn.addEventListener&&syn.addEventListener('voiceschanged',()=>{VV=pickVoice();vstat()})}
+/* system status */
+const SY=[
+["Giao diện web","Hiển thị hội thoại, phụ đề và nút lớn.",1,"Hoạt động"],
+["Nhận dạng giọng nói","Chuyển lời nói tiếng Việt thành văn bản (Web Speech API).",!!SR,SR?"Hoạt động":"Trình duyệt không hỗ trợ, hãy gõ văn bản"],
+["Đọc phản hồi",TTS_URL?"Giọng tiếng Việt từ máy chủ, dự phòng bằng giọng trình duyệt.":"Đọc to phản hồi bằng giọng tiếng Việt.",!!(syn||TTS_URL),TTS_URL?"Hoạt động (giọng máy chủ)":syn?"Hoạt động":"Trình duyệt không hỗ trợ"],
+["Rung thiết bị","Báo hiệu khi tới gần xe.",!!navigator.vibrate,navigator.vibrate?"Hoạt động":"Thiết bị không hỗ trợ"],
+["Hiểu yêu cầu","Nhận ý định đặt xe, đổi điểm đến, hủy, hỗ trợ bằng từ khóa.",1,"Hoạt động"],
+["Điều phối hội thoại","Điều khiển luồng từ chào hỏi đến hoàn tất chuyến.",1,"Hoạt động"],
+["Dữ liệu địa điểm","Danh sách điểm đón và điểm đến mẫu.",0,"Dữ liệu mẫu"],
+["Thanh toán tiền mặt","Báo số tiền cần trả và xác nhận bằng một chạm hoặc giọng nói.",0,"Mô phỏng"],
+["Máy chủ và đặt xe thật","Lưu chuyến, kết nối đối tác vận tải.",0,"Chưa kết nối"]];
+SY.forEach(r=>{const tr=document.createElement('tr');[r[0],r[1]].forEach(t=>{const td=document.createElement('td');td.textContent=t;tr.append(td)});const td=document.createElement('td'),b=document.createElement('span');b.className='bd '+(r[2]?'on':'off');b.textContent=r[3];td.append(b);tr.append(td);$('#sy').append(tr)});
+vstat();setTimeout(vstat,800);reset();
+</script>
+</body>
+</html>
